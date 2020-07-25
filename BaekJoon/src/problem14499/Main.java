@@ -41,11 +41,10 @@ public class Main {
 				tmp = row[2];
 				row[2] = row[1];
 				row[1] = row[0];
-				row[0] = tmp;
+				row[0] = col[3];
+				col[3] = tmp;
 				
 				col[1] = row[1];
-				
-
 			} else if(order[i] == 2) {
 				if(x == 0) {yn = 0; continue;}
 				x--;
@@ -53,11 +52,10 @@ public class Main {
 				tmp = row[0];
 				row[0] = row[1];
 				row[1] = row[2];
-				row[2] = tmp;
+				row[2] = col[3];
+				col[3] = tmp;
 				
 				col[1] = row[1];
-				
-				
 			} else if(order[i] == 3) {
 				if(y == 0) {yn = 0; continue;}
 				y--;
@@ -69,8 +67,6 @@ public class Main {
 				col[3] = tmp;
 				
 				row[1] = col[1];
-				
-				
 			} else if(order[i] == 4) {
 				if(y == N-1) {yn = 0; continue;}
 				y++;
@@ -80,13 +76,11 @@ public class Main {
 				col[2] = col[1];
 				col[1] = col[0];
 				col[0] = tmp;
-				
+
 				row[1] = col[1];
-				
-				
 			}
 			
-			if(yn == 1) {
+			if(yn != 0) {
 				if(map[y][x] == 0) {
 					map[y][x] = col[3];
 					System.out.println(row[1]);
@@ -95,7 +89,6 @@ public class Main {
 					System.out.println(row[1]);
 				}
 			}
-			
 		}
 		
 	}
