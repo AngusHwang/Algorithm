@@ -7,16 +7,16 @@ public class Main {
 	// À­¸é row[1]
 	static int [] col = {0, 0, 0, 0};
 	// À­¸é col[1], ¾Æ·§¸é col[3]
-	static int x;
-	static int y;
+	static int r;
+	static int c;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
 		int N = sc.nextInt();
 		int M = sc.nextInt();
 		int [][] map = new int[N][M];
-		x = sc.nextInt();
-		y = sc.nextInt();
+		r = sc.nextInt();
+		c = sc.nextInt();
 		int k = sc.nextInt();
 		int [] order = new int[k];
 		
@@ -34,9 +34,10 @@ public class Main {
 		for(int i = 0; i < k; i++) {
 			int tmp = 0;
 			int yn = 1;
+			
 			if(order[i] == 1) {
-				if(x == M-1) {yn = 0; continue;}
-				x++;
+				if(c == M-1) {yn = 0; continue;}
+				c++;
 				
 				tmp = row[2];
 				row[2] = row[1];
@@ -46,8 +47,8 @@ public class Main {
 				
 				col[1] = row[1];
 			} else if(order[i] == 2) {
-				if(x == 0) {yn = 0; continue;}
-				x--;
+				if(c == 0) {yn = 0; continue;}
+				c--;
 				
 				tmp = row[0];
 				row[0] = row[1];
@@ -57,8 +58,8 @@ public class Main {
 				
 				col[1] = row[1];
 			} else if(order[i] == 3) {
-				if(y == 0) {yn = 0; continue;}
-				y--;
+				if(r == 0) {yn = 0; continue;}
+				r--;
 				
 				tmp = col[0];
 				col[0] = col[1];
@@ -68,24 +69,25 @@ public class Main {
 				
 				row[1] = col[1];
 			} else if(order[i] == 4) {
-				if(y == N-1) {yn = 0; continue;}
-				y++;
+				if(r == N-1) {yn = 0; continue;}
+				r++;
 				
 				tmp = col[3];
 				col[3] = col[2];
 				col[2] = col[1];
 				col[1] = col[0];
 				col[0] = tmp;
-
+				
 				row[1] = col[1];
 			}
 			
 			if(yn != 0) {
-				if(map[y][x] == 0) {
-					map[y][x] = col[3];
+				if(map[r][c] == 0) {
+					map[r][c] = col[3];
 					System.out.println(row[1]);
 				} else {
-					col[3] = map[y][x];
+					col[3] = map[r][c];
+					map[r][c] = 0;
 					System.out.println(row[1]);
 				}
 			}
